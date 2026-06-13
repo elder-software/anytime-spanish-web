@@ -110,16 +110,19 @@ The style leans into **refined organic minimalism**: soft textures, generous neg
 
 ## Page Structure
 
-The homepage is a vertical stack of anchored sections. Each section has one job; avoid cramming multiple messages into a single block.
+The homepage is a vertical stack of anchored sections. Every section either explains what the app does or drives a download — the site is not the product.
 
 | Section | Role |
 | --- | --- |
-| **Header** | Persistent brand mark, in-page nav anchors, primary CTA |
-| **Hero** | Value proposition, emotional hook, primary and secondary CTAs |
+| **Header** | Brand mark, in-page nav anchors, persistent **Download** CTA |
+| **Hero** | Value proposition, app-store buttons above the fold, decorative app preview |
+| **How it works** | Three-step summary of the in-app flow (pick → speak → build confidence) |
 | **Features** | Three proof points that mirror the app's core differentiators |
-| **Conversation preview** | Showcase of topic categories — a taste of in-app content |
-| **CTA banner** | Final conversion moment with a concrete free offer |
-| **Footer** | Brand reinforcement and tagline |
+| **Content preview** | Compact category grid — breadth of topics without listing every scenario |
+| **CTA banner** | Final conversion moment with store buttons and free-offer copy |
+| **Footer** | Brand reinforcement and download link |
+
+**Primary conversion path:** Hero store buttons → scroll for detail → closing CTA banner. In-page anchors (`#how-it-works`, `#topics`, `#download`) support visitors who want more context before installing.
 
 **Content width:** Center content in a `max-w-5xl` container. Horizontal padding is `24px` on mobile (`px-6`) and `32px` on desktop (`md:px-8`).
 
@@ -180,22 +183,25 @@ The shape language is defined by **high circularity** — soft, touchable, and h
 
 ## Calls to Action
 
-Every CTA on the landing page should eventually route to the app (store link or deep link). Until those URLs exist, use placeholder `href="#"` or in-page anchors.
+Every CTA on the landing page routes to the mobile app (App Store or Google Play). Store URLs live in `lib/app-links.ts`. Until real links exist, use placeholder `href="#"`.
+
+Reuse the shared `AppDownloadButtons` component for consistent store CTAs.
 
 | Location | Style | Intent |
 | --- | --- | --- |
-| Header | `primary` button, compact | Persistent "Get started" |
-| Hero primary | `secondary` button, large | Main conversion — "Start your first conversation" |
-| Hero secondary | Outlined `surface-container` button | Scroll to conversation preview |
-| CTA banner | `primary` button, large | Repeat offer with concrete free topics |
+| Header | `primary` button, compact | Persistent "Download" |
+| Hero | `AppDownloadButtons` — `secondary` + outlined | Main conversion above the fold |
+| Content preview panel | `AppDownloadButtons`, compact | Reinforce that topics live in the app |
+| CTA banner | `AppDownloadButtons`, stacked | Final conversion with free-offer copy |
+| Footer | `primary` button, compact | Last-chance download |
 
-Secondary actions use a bordered, filled-neutral treatment so the amber/terracotta primaries remain visually dominant.
+The outlined Google Play button uses a bordered `surface-container` treatment so the amber App Store button remains visually dominant.
 
-## Conversation Preview
+## Content Preview
 
-The conversation section is a **marketing preview** of in-app content — not a functional topic browser. It shows visitors the breadth of practice scenarios they'll find after installing.
+The content preview is a **compact marketing grid** — not a functional topic browser. It shows category breadth without listing every scenario (that belongs in the app).
 
-Categories are grouped like sections in a phrasebook. **Free** is always first and acts as a curated showcase; its topics also appear in their thematic category so the page mirrors how learners discover content in the app.
+Categories are grouped like sections in a phrasebook. **Free** is always first. Data comes from `lib/categories.ts`.
 
 | Order | Category | ID | Topics |
 | --- | --- | --- | --- |
@@ -205,11 +211,25 @@ Categories are grouped like sections in a phrasebook. **Free** is always first a
 | 4 | Work & Goals | `work` | Job Interview Practice, Personal Goal |
 | 5 | Social & Connection | `social` | Weekend Small Talk, Family, Talking About a Hobby, Childhood Memories, Talking About Your Day |
 
-**Section layout:** Each category is a vertical stack — a header row, a one-line description, then topic cards. Use **Libre Caslon Text** at `headline-md` for the category title and **DM Sans** at `body-md` in `on-surface-variant` for the description. Separate categories with `section-gap` (40px). Within a category, keep `gutter` (16px) between the header block and the first card, and between cards.
+**Grid layout:** `sm:grid-cols-2`, `lg:grid-cols-3`. Each card shows the category title, description, up to **two** sample topic rows, and a "+N more in the app" line when additional topics exist.
 
 **Free badge:** When a category is marked free (`isFree`), show a small full-pill label (`rounded-full`) beside the title — **Secondary Soft Amber** (`secondary-container` / `on-secondary-container`). Label copy: **Free**.
 
-**Topic cards:** Display topic titles only. They are illustrative on the web; tapping them should not imply an in-browser lesson. Style as static preview rows with a subtle hover state for polish.
+**Closing panel:** Below the grid, a centered callout states that all topics live in the app, with compact `AppDownloadButtons` and a text link to `#download`.
+
+## Hero App Preview
+
+The hero includes a decorative **phone-frame mockup** (`AppPreview`) showing an in-app conversation UI — topic header, dialogue bubbles, and microphone affordance. It is `aria-hidden` and non-interactive; it helps visitors picture the product before downloading.
+
+## How It Works
+
+Three numbered steps in a single row from `md` breakpoint:
+
+1. **Pick a conversation** — topic selection
+2. **Speak naturally** — voice-first interaction
+3. **Build confidence** — gentle feedback loop
+
+Use the same card treatment as features, with numbered circles in rotated accent colors.
 
 ## Features Section
 
