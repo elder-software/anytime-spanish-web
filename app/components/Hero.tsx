@@ -17,7 +17,7 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-2xl text-center">
         <p className="text-label-sm text-on-surface-variant">
-          Voice-first Spanish practice · iOS & Android
+          Practice anywhere · Fully offline · Android (iOS coming soon)
         </p>
 
         <h1 className="text-display-lg mt-4 text-on-surface">
@@ -25,8 +25,8 @@ export function Hero() {
         </h1>
 
         <p className="text-body-lg mt-5 text-on-surface-variant">
-          Pick a scenario, speak naturally with your tutor, and build confidence
-          — like chatting in a plaza, not sitting through a drill.
+          On the plane, in the park, or off the grid. Pick a scenario and speak
+          naturally with your AI tutor.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -45,7 +45,8 @@ export function Hero() {
         </div>
 
         <p className="text-body-md mt-5 text-on-surface-variant">
-          Free to download. Two conversations included.
+          Free to download. Two conversations included. Unlock every scenario
+          for only $9.99 USD once. No subscription.
         </p>
       </div>
     </section>
