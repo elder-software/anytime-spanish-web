@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Libre_Caslon_Text } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const libreCaslon = Libre_Caslon_Text({
@@ -31,6 +32,7 @@ export default function RootLayout({
       className={`${libreCaslon.variable} ${dmSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body">{children}</body>
+      <Analytics />
     </html>
   );
 }
