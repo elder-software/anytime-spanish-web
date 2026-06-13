@@ -26,7 +26,7 @@ export function Hero() {
 
         <p className="text-body-lg mt-5 text-on-surface-variant">
           On the plane, in the park, or off the grid. Pick a scenario and speak
-          naturally with your AI tutor.
+          naturally with an AI tutor that lives on your phone.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -45,8 +45,10 @@ export function Hero() {
         </div>
 
         <p className="text-body-md mt-5 text-on-surface-variant">
-          Free to download. Two conversations included. Unlock every scenario
-          for only $9.99 USD once. No subscription.
+          Free to download. Two conversations included.
+        </p>
+        <p className="text-body-md mt-5 text-on-surface-variant">
+          Unlock every scenario for only $9.99 USD once. No subscription.
         </p>
       </div>
     </section>
